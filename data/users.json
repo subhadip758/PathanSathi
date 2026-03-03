@@ -1,0 +1,39 @@
+{
+  "admin": {
+    "password": "admin",
+    "role": "admin",
+    "borrowed": [],
+    "fine": 0,
+    "history": [],
+    "total_borrowed": 0
+  },
+  "subhadippalx@gmail.com": {
+    "password": "Abcd@1234",
+    "role": "admin",
+    "borrowed": [],
+    "fine": 0,
+    "history": [
+      "1984"
+    ],
+    "total_borrowed": 1
+  },
+  "malaypandeygoodboy@gmail.com": {
+    "password": "Abcd@1234",
+    "role": "admin",
+    "borrowed": [],
+    "fine": 0,
+    "history": [
+      "Macbeth",
+      "Macbeth"
+    ],
+    "total_borrowed": 2
+  },
+  "abcd@gmail.com": {
+    "password": "Abcde@1234",
+    "role": "user",
+    "borrowed": [],
+    "fine": 0,
+    "history": [],
+    "total_borrowed": 0
+  }
+}

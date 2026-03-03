@@ -1,0 +1,38 @@
+{
+  "1984": {
+    "copies": 3,
+    "author": "George Orwell",
+    "genre": "Dystopia",
+    "qr": "1984"
+  },
+  "To Kill a Mockingbird": {
+    "copies": 2,
+    "author": "Harper Lee",
+    "genre": "Classic",
+    "qr": "tkam"
+  },
+  "The Great Gatsby": {
+    "copies": 4,
+    "author": "F. Scott Fitzgerald",
+    "genre": "Classic",
+    "qr": "gatsby"
+  },
+  "Sapiens": {
+    "copies": 5,
+    "author": "Yuval Noah Harari",
+    "genre": "Nonfiction",
+    "qr": "sapiens"
+  },
+  "The Alchemist": {
+    "copies": 3,
+    "author": "Paulo Coelho",
+    "genre": "Fiction",
+    "qr": "alchemist"
+  },
+  "Macbeth": {
+    "copies": 2,
+    "author": "W. S",
+    "genre": "Novel",
+    "qr": "Macbeth5"
+  }
+}

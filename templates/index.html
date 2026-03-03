@@ -1,0 +1,43 @@
+{% extends "base.html" %}{% block content %}
+<div class="row">
+  <div class="col-md-8">
+    <h1>Welcome — PathanSathi</h1>
+    <p>Search, filter, borrow.</p>
+
+    <form id="searchForm" class="row g-2 mb-3" onsubmit="return false;">
+      <div class="col"><input id="q" name="q" class="form-control" placeholder="Title keyword"></div>
+      <div class="col"><input id="author" name="author" class="form-control" placeholder="Author"></div>
+      <div class="col"><input id="genre" name="genre" class="form-control" placeholder="Genre"></div>
+      <div class="col-auto"><button id="searchBtn" class="btn btn-primary">Search</button></div>
+    </form>
+
+    <div id="results">
+      <h4>Available Books</h4>
+      <ul id="resultsList" class="list-group">
+      {% for title, i in books.items() %}
+        <li class="list-group-item book-item d-flex justify-content-between align-items-center" 
+            data-title="{{ title }}" data-author="{{ i.author }}" data-genre="{{ i.genre }}">
+          <div>
+            <strong class="book-title">{{ title }}</strong><br>
+            <small class="book-author">{{ i.author }}</small> — <small class="book-genre">{{ i.genre }}</small>
+          </div>
+          <span class="badge rounded-pill">{{ i.copies }}</span>
+        </li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-md-4">
+    <div class="card p-3">
+      <h5>Quick</h5>
+      <p>Use the chat assistant to get recommendations.</p>
+      <div class="input-group">
+        <input id="chatQ" class="form-control" placeholder='Ask "recommend" or "suggest fiction"'>
+        <button id="chatBtn" class="btn btn-secondary">Ask</button>
+      </div>
+      <div id="chatResp" class="mt-2 small text-muted"></div>
+    </div>
+  </div>
+</div>
+{% endblock %}

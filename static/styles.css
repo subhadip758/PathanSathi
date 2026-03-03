@@ -1,0 +1,5 @@
+body { background: #f7f9fc; }
+.card { border-radius: 10px; box-shadow: 0 6px 18px rgba(20,20,50,0.06); }
+.navbar-brand { font-weight: 700; }
+html[data-theme="dark"] { background: #0b1220; color: #e6eef8; }
+html[data-theme="dark"] .card { background: #091220; color: #dbe9ff; }

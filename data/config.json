@@ -1,0 +1,9 @@
+{
+  "smtp": {
+    "host": "",
+    "port": 587,
+    "username": "",
+    "password": "",
+    "from_email": "noreply@library.example"
+  }
+}
