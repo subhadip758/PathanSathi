@@ -1,14 +1,28 @@
 from flask import Flask, render_template, request, redirect, url_for, session, flash, jsonify, send_file, abort
 from datetime import datetime, timedelta
-import json, os, re, qrcode, io, smtplib
+import json, os, re, qrcode, io, smtplib, shutil
 from email.message import EmailMessage
 
 BASE = os.path.dirname(__file__)
-DATA_DIR = os.path.join(BASE, "data")
+
+if os.environ.get("VERCEL") == "1":
+    DATA_DIR = "/tmp/data"
+    QRC_DIR = "/tmp/qrcodes"
+    os.makedirs(DATA_DIR, exist_ok=True)
+    os.makedirs(QRC_DIR, exist_ok=True)
+    # Copy existing files from project tree to /tmp if not already there
+    for filename in ["users.json", "books.json", "config.json"]:
+        src = os.path.join(BASE, "data", filename)
+        dst = os.path.join(DATA_DIR, filename)
+        if not os.path.exists(dst) and os.path.exists(src):
+            shutil.copy2(src, dst)
+else:
+    DATA_DIR = os.path.join(BASE, "data")
+    QRC_DIR = os.path.join(BASE, "static", "qrcodes")
+
 USERS_FILE = os.path.join(DATA_DIR, "users.json")
 BOOKS_FILE = os.path.join(DATA_DIR, "books.json")
 CONFIG_FILE = os.path.join(DATA_DIR, "config.json")
-QRC_DIR = os.path.join(BASE, "static", "qrcodes")
 
 def ensure():
     os.makedirs(DATA_DIR, exist_ok=True)
