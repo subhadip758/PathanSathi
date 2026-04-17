@@ -1,6 +1,8 @@
 Library Website PathanSathi — Upgraded
 =============================
 
+**Live Demo:** [https://pathansathi.onrender.com](https://pathansathi.onrender.com)
+
 What's new in PathanSathi:
 - Email-only usernames enforced at registration.
 - Strong password validation (min length 8, upper, lower, digit, special).
