@@ -1,4 +1,4 @@
 Flask==2.2.5
 qrcode[pil]==7.3
 Pillow
-gunicorn==20.1.0
+gunicorn
