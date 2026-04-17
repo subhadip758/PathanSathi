@@ -230,11 +230,11 @@ def qrcode_image(book):
     books = load_books()
     if book not in books: abort(404)
     qr_text = books[book].get('qr',book)
-    img_path = os.path.join(QRC_DIR, f"{qr_text}.png")
-    if not os.path.exists(img_path):
-        img = qrcode.make(qr_text)
-        img.save(img_path)
-    return send_file(img_path, mimetype='image/png')
+    img = qrcode.make(qr_text)
+    buf = io.BytesIO()
+    img.save(buf, format='PNG')
+    buf.seek(0)
+    return send_file(buf, mimetype='image/png')
 
 # manual reminders (admin triggered)
 def send_email(to, subject, body):
