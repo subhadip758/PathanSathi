@@ -5,7 +5,17 @@ from email.message import EmailMessage
 
 BASE = os.path.dirname(__file__)
 
-if os.environ.get("VERCEL") == "1":
+def is_writable(path):
+    try:
+        test_file = os.path.join(path, '.write_test')
+        with open(test_file, 'w') as f:
+            f.write('test')
+        os.remove(test_file)
+        return True
+    except Exception:
+        return False
+
+if not is_writable(BASE):
     DATA_DIR = "/tmp/data"
     QRC_DIR = "/tmp/qrcodes"
     os.makedirs(DATA_DIR, exist_ok=True)
@@ -15,7 +25,11 @@ if os.environ.get("VERCEL") == "1":
         src = os.path.join(BASE, "data", filename)
         dst = os.path.join(DATA_DIR, filename)
         if not os.path.exists(dst) and os.path.exists(src):
-            shutil.copy2(src, dst)
+            # Manually read and write to avoid copying read-only permissions from Vercel's source tree
+            with open(src, 'r', encoding='utf-8') as fr:
+                content = fr.read()
+            with open(dst, 'w', encoding='utf-8') as fw:
+                fw.write(content)
 else:
     DATA_DIR = os.path.join(BASE, "data")
     QRC_DIR = os.path.join(BASE, "static", "qrcodes")
